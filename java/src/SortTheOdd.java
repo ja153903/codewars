@@ -3,17 +3,15 @@ import java.util.stream.IntStream;
 
 public class SortTheOdd {
     public static int[] sortArray(int[] array) {
-        int[] indices = IntStream.rangeClosed(0, array.length-1)
-                .filter(index -> array[index] % 2 == 1)
+        int[] sortedValues = Arrays.stream(array)
+                .filter(element -> element % 2 == 1)
+                .sorted()
                 .toArray();
 
-         int[] sortedValues = IntStream.rangeClosed(0, indices.length-1)
-                 .map(index -> array[indices[index]])
-                 .sorted()
-                 .toArray();
-
-         for (int i = 0; i < indices.length; i++) {
-             array[indices[i]] = sortedValues[i];
+         for (int i = 0, j = 0; i < array.length; i++) {
+            if (array[i] % 2 == 1) {
+                array[i] = sortedValues[j++];
+            }
          }
 
          return array;
