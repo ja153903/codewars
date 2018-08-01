@@ -20,18 +20,13 @@ public class StepsInPrime {
                 .filter(StepsInPrime::isPrime)
                 .toArray();
 
-        // Find the pairs of difference g
-        ArrayList<long[]> pairs = new ArrayList<>();
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = arr.length - 1; j > i; j--) {
-                if (arr[j] - arr[i] == g) {
-                    pairs.add(new long[]{ arr[i], arr[j] });
-                }
+        for (int i = 0; i < arr.length-1; i++) {
+            if (arr[i+1] - arr[i] == g) {
+                return new long[]{ arr[i], arr[i+1]};
             }
         }
 
-        return pairs.size() > 0 ? pairs.get(0) : null;
+        return null;
     }
 
     public static void printArray(long[] res) {
@@ -39,10 +34,14 @@ public class StepsInPrime {
     }
 
     public static void main(String[] args) {
-        long[] res = step(2, 100, 110);
+         long[] res = step(2, 100, 110);
         long[] res2 = step(8, 300, 400);
-//        long[] res3 = step(6, 100, 110);
-//        long[] res4 = step(10, 300, 400);
-        printArray(res2);
+        long[] res3 = step(6, 100, 110);
+        long[] res4 = step(10, 300, 400);
+//        System.out.println(Arrays.toString(res2));
+        System.out.println(Arrays.toString(res));
+        System.out.println(Arrays.toString(res2));
+        System.out.println(res3);
+        System.out.println(Arrays.toString(res4));
     }
 }
