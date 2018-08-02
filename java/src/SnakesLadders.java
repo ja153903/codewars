@@ -76,14 +76,16 @@ public class SnakesLadders {
         return SNAKES.containsKey(key);
     }
 
+    public boolean hasLadder(int key) { return LADDERS.containsKey(key); }
+
     public void setNextSquare(int nextSquare) {
         if (nextSquare > 100 && !hasSnake(200 - nextSquare)) {
             this.currentPlayer.setSquare(200 - nextSquare);
         } else if (nextSquare > 100) {
             this.currentPlayer.setSquare(SNAKES.get(200 - nextSquare));
-        } else if (LADDERS.containsKey(nextSquare)) {
+        } else if (hasLadder(nextSquare)) {
             this.currentPlayer.setSquare(LADDERS.get(nextSquare));
-        } else if (SNAKES.containsKey(nextSquare)) {
+        } else if (hasSnake(nextSquare)) {
             this.currentPlayer.setSquare(SNAKES.get(nextSquare));
         } else {
             this.currentPlayer.setSquare(nextSquare);
