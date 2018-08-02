@@ -26,5 +26,6 @@ public class Josephus {
 
     public static void main(String[] args) {
         josephusPermutation(new ArrayList(Arrays.asList(new Object[]{1,2,3,4,5,6,7})), 3);
+
     }
 }
